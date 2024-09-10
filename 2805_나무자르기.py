@@ -3,16 +3,18 @@ import sys
 n, meters = map(int, sys.stdin.readline().split())
 trees = list(map(int, sys.stdin.readline().split()))
 
-get = 0
+start, end = 1, sum(trees)
 
-for height in range(max(trees), 0, -1):
-    for i in range(n):
-        if trees[i] > height:
-            get += trees[i] - height
-        else:
-            continue
-    if get >= meters:
-        print(height)
-        break
-    else:
-        get = 0
+while start <= end:
+    mid = (start+end) // 2
+    cnt =  0
+    
+    for tree in trees:
+        if tree > mid:
+            cnt += tree - mid
+    if cnt >= meters:
+        start = mid + 1
+    else: 
+        end = mid - 1
+    
+print(end)

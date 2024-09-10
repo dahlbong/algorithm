@@ -22,4 +22,4 @@ def dfs(city, cost):
             visited[i] = False
 
 dfs(0,0)
-print(min_cost)
+print(min_cost) 
